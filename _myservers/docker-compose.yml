@@ -1,5 +1,36 @@
 version: '3.8'
 services:
+  duel:
+    image: quakeliveserverstandards/duel
+    restart: always
+    ports:
+      - '27960:27960/udp' # game port
+      - '27960:27960/tcp' # stats port
+      - '28960:28960/tcp' # rcon port
+    environment:
+      - NET_PORT=27960
+      # - ZMQ_RCON_PORT=
+      # - ZMQ_STATS_PORT=
+      - 'SV_HOSTNAME=Standard Duel #1'
+      - SV_TAGS=duel std
+      # - SERVERSTARTUP=map bloodrun stdduel
+      # - COM_HUNKMEGS=
+      # - G_PASSWORD=secret
+      # - SV_HOSTNAME=
+      # - SV_MAXCLIENTS=
+      # - SV_PRIVATECLIENTS=
+      # - SV_PRIVATEPASSWORD=
+      # - QLX_PLUGINS=
+    volumes:
+      - './access.txt:/home/steam/ql/baseq3/access.txt'
+      - './autoexec.cfg:/home/steam/ql/baseq3/autoexec.cfg'
+      - '../configs/standard/server.cfg:/home/steam/ql/baseq3/server.cfg'
+      - '../factories/standard/duel/duel.factories:/home/steam/ql/baseq3/scripts/duel.factories'
+      - '../mappools/standard/duel/mappool.txt:/home/steam/ql/baseq3/mappool.txt'
+      - '../minqlx-plugins/standard/duel:/home/steam/ql/minqlx-plugins'
+      - '../workshop/standard/duel/workshop.txt:/home/steam/ql/baseq3/workshop.txt'
+    depends_on: 
+      - redis
 # Redis database needed by minqlx
   redis:
     image: redis
