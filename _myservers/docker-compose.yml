@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   duel:
     image: quakeliveserverstandards/duel
@@ -11,9 +10,9 @@ services:
       - NET_PORT=27960
       # - ZMQ_RCON_PORT=
       # - ZMQ_STATS_PORT=
-      - 'SV_HOSTNAME=Standard Duel #1'
+      - 'SV_HOSTNAME=6yM4uk Duel Server'
       - SV_TAGS=duel std
-      # - SERVERSTARTUP=map bloodrun stdduel
+      # - SERVERSTARTUP=map sinister stdduel
       # - COM_HUNKMEGS=
       # - G_PASSWORD=secret
       # - SV_HOSTNAME=
